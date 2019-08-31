@@ -5,7 +5,7 @@ BRANCH_NAME=$2
 SCAN_TYPE=$3
 
 if [ "$SCAN_TYPE" == "all" ] ; then
-    TEST_CONFIG=phpunit-all.dist
+    TEST_CONFIG=phpunit-all.xml.dist
 elif [ "$SCAN_TYPE" == "custom" ] ; then
     TEST_CONFIG=phpunit.xml
 else

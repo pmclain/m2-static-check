@@ -1,4 +1,4 @@
-FROM php:7.2-cli
+FROM php:7.1-cli
 
 LABEL MAINTAINER="Patrick McLain <pat@pmclain.com>"
 
@@ -9,7 +9,7 @@ RUN apt-get update \
     libfreetype6-dev \
     libicu-dev \
     libjpeg62-turbo-dev \
-    libsodium-dev \
+    libmcrypt-dev \
     libpng-dev \
     libxslt1-dev \
     sudo \
@@ -42,7 +42,7 @@ RUN docker-php-ext-install \
   zip \
   soap \
   bcmath \
-  sodium
+  mcrypt
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 VOLUME /root/.composer/cache

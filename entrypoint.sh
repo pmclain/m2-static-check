@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 REPO_URL=$1
 BRANCH_NAME=$2
@@ -25,5 +24,11 @@ php dev/tests/static/get_github_changes.php \
 cd /app/dev/tests/static || exit 1
 ../../../vendor/bin/phpunit -c $TEST_CONFIG
 
+# Store the exit code as a variable so test results can generate
+# before exiting with a non-zero code on test failure
+TEST_EXIT_CODE=$?
+
 mkdir -p /app/dev/tests/static/allure-output
 allure generate -o /app/dev/tests/static/allure-output /app/dev/tests/static/var/allure-results/
+
+exit $TEST_EXIT_CODE
